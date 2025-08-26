@@ -1,1 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+@layer base {
+  :root {
+        --background: 0 0% 100%;
+        --foreground: 0 0% 3.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 3.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 3.9%;
+        --primary: 0 0% 9%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 0 0% 96.1%;
+        --secondary-foreground: 0 0% 9%;
+        --muted: 0 0% 96.1%;
+        --muted-foreground: 0 0% 45.1%;
+        --accent: 0 0% 96.1%;
+        --accent-foreground: 0 0% 9%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 0 0% 89.8%;
+        --input: 0 0% 89.8%;
+        --ring: 0 0% 3.9%;
+        --chart-1: 12 76% 61%;
+        --chart-2: 173 58% 39%;
+        --chart-3: 197 37% 24%;
+        --chart-4: 43 74% 66%;
+        --chart-5: 27 87% 67%;
+        --radius: 0.5rem;
+    }
+  .dark {
+        --background: 0 0% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 0 0% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --popover: 0 0% 3.9%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 0 0% 98%;
+        --primary-foreground: 0 0% 9%;
+        --secondary: 0 0% 14.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 0 0% 14.9%;
+        --muted-foreground: 0 0% 63.9%;
+        --accent: 0 0% 14.9%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 0 0% 14.9%;
+        --input: 0 0% 14.9%;
+        --ring: 0 0% 83.1%;
+        --chart-1: 220 70% 50%;
+        --chart-2: 160 60% 45%;
+        --chart-3: 30 80% 55%;
+        --chart-4: 280 65% 60%;
+        --chart-5: 340 75% 55%;
+    }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+}
+5. frontend/src/mock.js
+// Mock data for OMEGA WEB SYSTEM
+
+export const aboutData = {
+  title: "À PROPOS D'OMEGA WEB SYSTEM",
+  description: "Spécialisée dans la création de sites vitrine, OMEGA WEB SYSTEM accompagne les entreprises de toutes tailles dans leur transformation digitale depuis 2020.",
+  mission: "Notre mission est de créer des sites web performants, responsifs et optimisés pour le référencement, permettant à nos clients de développer leur visibilité en ligne et d'attirer de nouveaux prospects.",
+  expertise: [
+    "Design responsive et moderne",
+    "Optimisation SEO incluse",
+    "Formation à la gestion du site",
+    "Maintenance et support technique"
+  ],
+  stats: [
+    { number: "50+", label: "Sites créés" },
+    { number: "100%", label: "Clients satisfaits" },
+    { number: "15", label: "Jours de livraison" },
+    { number: "1 an", label: "Support gratuit" }
+  ]
+};
+
+export const servicesData = [
+  {
+    id: 1,
+    title: "Site Vitrine Essentiel",
+    price: "À partir de 500€",
+    description: "Parfait pour les petites entreprises qui souhaitent une présence web professionnelle.",
+    features: [
+      "5 pages maximum",
+      "Design responsive",
+      "Optimisation SEO de base",
+      "Formulaire de contact",
+      "1 révision incluse"
+    ]
+  },
+  {
+    id: 2,
+    title: "Site Vitrine Pro",
+    price: "À partir de 800€",
+    description: "Solution complète pour les entreprises qui veulent se démarquer.",
+    features: [
+      "10 pages maximum",
+      "Design sur mesure",
+      "SEO avancé",
+      "Galerie photos/portfolio",
+      "Blog intégré",
+      "3 révisions incluses"
+    ]
+  },
+  {
+    id: 3,
+    title: "Site Vitrine Premium",
+    price: "À partir de 1200€",
+    description: "L'excellence web pour les entreprises exigeantes.",
+    features: [
+      "Pages illimitées",
+      "Design premium unique",
+      "SEO expert",
+      "Animations personnalisées",
+      "Intégrations avancées",
+      "Formation complète",
+      "Révisions illimitées"
+    ]
+  }
+];
+
+export const portfolioData = [
+  {
+    id: 1,
+    title: "Site Corporate - Actualités",
+    category: "Média & Information",
+    description: "Site d'actualités professionnel avec interface moderne et navigation intuitive.",
+    image: "https://images.unsplash.com/photo-1583932692875-a42450d50acf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHx3ZWJzaXRlJTIwc2NyZWVuc2hvdHN8ZW58MHx8fHwxNzU1ODQzODcyfDA&ixlib=rb-4.1.0&q=85",
+    technologies: ["Responsive Design", "SEO Optimisé", "CMS Intégré"]
+  },
+  {
+    id: 2,
+    title: "Plateforme Bancaire Digitale",
+    category: "Finance & Services",
+    description: "Interface bancaire sécurisée avec tableau de bord client personnalisé.",
+    image: "https://images.unsplash.com/photo-1642143231828-786fbd515a13?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwzfHx3ZWJzaXRlJTIwc2NyZWVuc2hvdHN8ZW58MHx8fHwxNzU1ODQzODcyfDA&ixlib=rb-4.1.0&q=85",
+    technologies: ["Sécurité Renforcée", "UX/UI Premium", "Mobile First"]
+  },
+  {
+    id: 3,
+    title: "Dashboard Analytics Entreprise",
+    category: "Business Intelligence",
+    description: "Tableau de bord analytique avec visualisations de données avancées.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHdlYnNpdGV8ZW58MHx8fHwxNzU1ODQzODc4fDA&ixlib=rb-4.1.0&q=85",
+    technologies: ["Data Visualization", "API Integration", "Real-time"]
+  },
+  {
+    id: 4,
+    title: "Plateforme Creative Portfolio",
+    category: "Créatif & Design",
+    description: "Portfolio créatif avec galerie interactive et présentation immersive.",
+    image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMHdlYnNpdGV8ZW58MHx8fHwxNzU1ODQzODc4fDA&ixlib=rb-4.1.0&q=85",
+    technologies: ["Portfolio Design", "Animation CSS", "Galerie Interactive"]
+  },
+  {
+    id: 5,
+    title: "Interface Design Colorée",
+    category: "UI/UX Design",
+    description: "Interface utilisateur moderne avec palette colorée et expérience fluide.",
+    image: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg",
+    technologies: ["UI/UX Design", "Prototyping", "User Testing"]
+  },
+  {
+    id: 6,
+    title: "Réseau Social Professionnel",
+    category: "Réseaux Sociaux",
+    description: "Plateforme sociale d'entreprise avec fonctionnalités de networking.",
+    image: "https://images.pexels.com/photos/479358/pexels-photo-479358.jpeg",
+    technologies: ["Social Features", "User Management", "Real-time Chat"]
+  }
+];
+
+export const testimonialsData = [
+  {
+    id: 1,
+    name: "Marie Dubois",
+    company: "Restaurant Le Petit Gourmand",
+    location: "Nantes",
+    rating: 5,
+    comment: "OMEGA WEB SYSTEM a créé un site magnifique pour notre restaurant. Le design est élégant et nos réservations en ligne ont augmenté de 40%. Service impeccable !",
+    image: "/api/placeholder/80/80"
+  },
+  {
+    id: 2,
+    name: "Pierre Martin",
+    company: "Martin Plomberie SARL",
+    location: "Saint-Nazaire",
+    rating: 5,
+    comment: "Site professionnel livré dans les délais promis. L'équipe est très à l'écoute et le suivi post-livraison est excellent. Je recommande vivement !",
+    image: "/api/placeholder/80/80"
+  },
+  {
+    id: 3,
+    name: "Sophie Bernard",
+    company: "Cabinet d'Avocat Bernard & Associés",
+    location: "La Baule",
+    rating: 5,
+    comment: "Un site web qui reflète parfaitement notre expertise juridique. Design sobre et professionnel, exactement ce que nous recherchions. Merci à toute l'équipe !",
+    image: "/api/placeholder/80/80"
+  }
+];
+
+export const contactInfo = {
+  address: "8 rue des bleuets, 44580 Bourgneuf en Retz",
+  phone: "06 08 85 35 15",
+  email: "contact@omegawebsystem.fr",
+  hours: {
+    weekdays: "Lun - Ven: 9h00 - 18h00",
+    weekend: "Sam: 9h00 - 12h00"
+  }
+};
