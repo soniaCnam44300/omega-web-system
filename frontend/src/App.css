@@ -1,62 +1,505 @@
-import React, { useEffect } from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Toaster } from "./components/ui/sonner";
-import { initAllAnimations } from "./utils/animations";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Services from "./components/Services";
-import Portfolio from "./components/Portfolio";
-import Testimonials from "./components/Testimonials";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+/* OMEGA WEB SYSTEM - Design adapté au logo */
 
-const Home = () => {
-  useEffect(() => {
-    // Initialiser les animations après le montage du composant
-    const timer = setTimeout(() => {
-      initAllAnimations();
-    }, 100);
+/* Import fonts - Typography moderne et professionnelle */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <div className="min-h-screen bg-page">
-      <Header />
-      <Hero />
-      <div className="animate-on-scroll">
-        <About />
-      </div>
-      <div className="animate-on-scroll">
-        <Services />
-      </div>
-      <div className="animate-on-scroll">
-        <Portfolio />
-      </div>
-      <div className="animate-on-scroll">
-        <Testimonials />
-      </div>
-      <div className="animate-on-scroll">
-        <Contact />
-      </div>
-      <Footer />
-    </div>
-  );
-};
-
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
-      <Toaster />
-    </div>
-  );
+/* CSS Variables - Palette inspirée du logo OMEGA WEB SYSTEM */
+:root {
+  /* Backgrounds - Tons neutres modernes */
+  --bg-page: #0a0b0d;                       /* Noir profond moderne */
+  --bg-card: #141519;                       /* Gris très foncé pour les cartes */
+  --bg-secondary: #1a1c21;                  /* Gris foncé secondaire */
+  --bg-light: #f7f8fa;                      /* Blanc cassé moderne */
+  
+  /* Text - Hiérarchie inspirée du logo */
+  --text-primary: #ffffff;                  /* Blanc pur pour le texte principal */
+  --text-secondary: #a1a5b0;                /* Gris clair pour le texte secondaire */
+  --text-muted: #6b7280;                    /* Gris moyen pour les détails */
+  --text-inverse: #0a0b0d;                  /* Texte sur fond clair */
+  
+  /* Couleurs d'accent - Inspirées du logo */
+  --accent-primary: #3b82f6;                /* Bleu moderne du logo */
+  --accent-secondary: #06b6d4;              /* Cyan complémentaire */
+  --accent-success: #10b981;                /* Vert pour les succès */
+  --accent-warning: #f59e0b;                /* Orange pour les alertes */
+  
+  /* Borders - Subtiles et modernes */
+  --border-light: rgba(255, 255, 255, 0.08); /* Bordures subtiles */
+  --border-medium: rgba(255, 255, 255, 0.15); /* Bordures moyennes */
+  --border-strong: rgba(59, 130, 246, 0.3);   /* Bordures accentuées */
+  
+  /* Brand Colors - Harmonisées avec le logo */
+  --brand-primary: #3b82f6;                 /* Bleu principal du logo */
+  --brand-hover: #2563eb;                   /* Bleu plus foncé au survol */
+  --brand-active: #1d4ed8;                  /* Bleu actif */
+  --brand-gradient: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+  
+  /* Shadows - Profondeur moderne */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.25);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.15);
 }
 
-export default App;
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+}
+
+/* Typography System - Moderne et lisible */
+.brand-display { 
+  font-family: 'Space Grotesk', 'Inter', sans-serif; 
+  font-weight: 700; 
+  font-size: clamp(3rem, 8vw, 6rem); 
+  line-height: 1.1; 
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heading-1 { 
+  font-family: 'Space Grotesk', 'Inter', sans-serif; 
+  font-weight: 700; 
+  font-size: clamp(2.5rem, 6vw, 4rem); 
+  line-height: 1.2; 
+  text-transform: uppercase; 
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.heading-2 { 
+  font-family: 'Space Grotesk', 'Inter', sans-serif; 
+  font-weight: 600; 
+  font-size: clamp(2rem, 4vw, 3rem); 
+  line-height: 1.3; 
+  text-transform: uppercase; 
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.heading-3 { 
+  font-family: 'Space Grotesk', 'Inter', sans-serif; 
+  font-weight: 600; 
+  font-size: clamp(1.5rem, 3vw, 2.5rem); 
+  line-height: 1.3; 
+  color: var(--text-primary);
+}
+
+.heading-4 { 
+  font-family: 'Inter', sans-serif; 
+  font-weight: 600; 
+  font-size: 1.5rem; 
+  line-height: 1.4; 
+  color: var(--text-primary);
+}
+
+.body-large { 
+  font-family: 'Inter', sans-serif; 
+  font-weight: 400; 
+  font-size: 1.25rem; 
+  line-height: 1.6; 
+  color: var(--text-secondary); 
+}
+
+.body-medium { 
+  font-family: 'Inter', sans-serif; 
+  font-weight: 400; 
+  font-size: 1.125rem; 
+  line-height: 1.6; 
+  color: var(--text-secondary); 
+}
+
+.body-small { 
+  font-family: 'Inter', sans-serif; 
+  font-weight: 400; 
+  font-size: 1rem; 
+  line-height: 1.6; 
+  color: var(--text-muted); 
+}
+
+.caption { 
+  font-family: 'Inter', sans-serif; 
+  font-weight: 500; 
+  font-size: 0.875rem; 
+  line-height: 1.4; 
+  color: var(--text-muted); 
+  text-transform: uppercase; 
+  letter-spacing: 0.05em; 
+}
+
+/* Button Styles - Modernes et élégants */
+.btn-primary {
+  background: var(--brand-gradient);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 12px;
+  padding: 16px 32px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 56px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl), var(--shadow-glow);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--brand-primary);
+  border: 2px solid var(--brand-primary);
+  border-radius: 12px;
+  padding: 14px 30px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 56px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--brand-gradient);
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.btn-secondary:hover::before {
+  width: 100%;
+}
+
+.btn-secondary:hover {
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Navigation Links */
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75em 1.5em;
+  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 8px;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--brand-gradient);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
+/* Cards avec design moderne glassmorphism */
+.card {
+  background: rgba(20, 21, 25, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--brand-gradient);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  background: rgba(20, 21, 25, 0.95);
+  transform: translateY(-8px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-xl), var(--shadow-glow);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Logo animations */
+.logo-animate {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(1);
+}
+
+.logo-animate:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1) drop-shadow(0 8px 16px rgba(59, 130, 246, 0.25));
+}
+
+/* Header moderne avec glassmorphism */
+header {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: rgba(10, 11, 13, 0.85);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Hero section avec design futuriste */
+.hero-section {
+  background: radial-gradient(ellipse at center top, rgba(59, 130, 246, 0.08) 0%, var(--bg-page) 50%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 140px 0 100px;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.06) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(45deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Animations et micro-interactions */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.floating-logo {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Gradient text effects */
+.gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Spacing System - Design moderne */
+.space-20 { margin: 20px; }
+.space-40 { margin: 40px; }
+.space-96 { margin: 96px; }
+.space-120 { margin: 120px; }
+
+.pad-20 { padding: 20px; }
+.pad-40 { padding: 40px; }
+.pad-96 { padding: 96px; }
+.pad-120 { padding: 120px; }
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Utility classes */
+.bg-page { background-color: var(--bg-page); }
+.bg-card { background-color: var(--bg-card); }
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-inverse { color: var(--text-inverse); }
+.brand-primary { color: var(--brand-primary); }
+.brand-hover { color: var(--brand-hover); }
+.border-light { border-color: var(--border-light); }
+.border-medium { border-color: var(--border-medium); }
+
+/* Form elements */
+input, textarea, select {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 100px 0 80px;
+    min-height: 90vh;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    min-height: 52px;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .brand-display {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  .card:hover {
+    transform: translateY(-12px);
+  }
+  
+  .hero-section {
+    padding: 160px 0 120px;
+  }
+}
+
+/* Scroll animations */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+3. frontend/src/index.js
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
